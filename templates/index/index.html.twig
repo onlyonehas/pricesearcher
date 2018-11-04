@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for action in actionTypes %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ action.id }}</h3>
+            </div>
+            <div class="panel-body">
+                {{ action.descr }}
+            </div>
+
+            {% if action.status != 'Done' %}
+                <button type="button" class="btn btn-primary">Primary</button>
+            {% else %}
+                <button type="button" class="btn btn-primary">Primary</button>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}
