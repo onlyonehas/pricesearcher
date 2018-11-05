@@ -1,21 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+    <div class="container-fluid center">
     {% for action in actionTypes %}
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{ action.id }}</h3>
+        <div class="card bg-light mb-3 text-center" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ action.id }}</h5>
+                <div class="card-text">
+                    {{ action.descr }}
+                </div>
+                <br />
+                {% if action.status != 'Done' %}
+                    <a href="http://{{ host }}/{{ action.id }}" class="btn btn-primary">Select</a>
+                {% else %}
+                    <img src="{{ action.filelocation }}"/>
+                    <a href="#" class="btn btn-sm btn-success disabled">Done</a>
+                {% endif %}
             </div>
-            <div class="panel-body">
-                {{ action.descr }}
-            </div>
-
-            {% if action.status != 'Done' %}
-                <button type="button" class="btn btn-primary">Primary</button>
-            {% else %}
-                <button type="button" class="btn btn-primary">Primary</button>
-            {% endif %}
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
